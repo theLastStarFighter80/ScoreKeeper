@@ -4,15 +4,362 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/p1"
+    tools:context="com.example.android.scorekeeper.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id='@+id/scoreTracker'
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:orientation='horizontal'
+        app:layout_constraintBottom_toTopOf="@+id/penaltyTracker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/team_score_a"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/team_score_b"
+            android:orientation='vertical'>
+
+            <TextView
+                android:id="@+id/team_a"
+                android:layout_width="170dp"
+                android:layout_height="46dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/textview_bg"
+                android:gravity="center_horizontal"
+                android:text="@string/team_a"
+                android:textColor='#768fff'
+                android:textSize='30sp'
+                app:fontFamily="serif"
+                tools:text="HOME" />
+
+            <TextView
+                android:id='@+id/team_a_score'
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/textview_bg"
+                android:gravity="center_horizontal"
+                android:text="@string/team_a_score"
+                android:textColor='#768fff'
+                android:textSize='34sp'
+                app:fontFamily="monospace"
+                tools:text="0" />
+
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="32dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_bg"
+                android:onClick="addTouchDownForTeamA"
+                android:padding="4dp"
+                android:text="@string/touchdown"
+                android:textColor='#ad0000'
+                android:textSize='16sp'
+                tools:text="TOUCHDOWN" />
+
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="32dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_bg"
+                android:onClick="addFieldGoalForTeamA"
+                android:padding="4dp"
+                android:text="@string/fieldgoal"
+                android:textColor='#ad0000'
+                android:textSize='16sp' />
+
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="32dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_bg"
+                android:onClick="addSafetyForTeamA"
+                android:padding="4dp"
+                android:text="@string/safety"
+                android:textColor='#ad0000'
+                android:textSize='16sp'
+                tools:text="SAFETY" />
+
+            <Button
+                android:id='@+id/resetScoreTeamA'
+                android:layout_width="170dp"
+                android:layout_height="46dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_bg"
+                android:onClick="resetScoreA"
+                android:padding="4dp"
+                android:text="@string/reset_score_a"
+                android:textColor='#768fff'
+                android:textSize='30sp'
+                app:fontFamily="serif"
+                tools:text="RESET" />
+
+        </LinearLayout>
+
+        <!--<View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />-->
+
+        <LinearLayout
+            android:id="@+id/team_score_b"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="@id/team_score_a"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation='vertical'>
+
+            <TextView
+                android:id="@+id/team_b"
+                android:layout_width="170dp"
+                android:layout_height="46dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/textview_bg"
+                android:gravity="center_horizontal"
+                android:text="@string/team_b"
+                android:textColor='#768fff'
+                android:textSize='30sp'
+                app:fontFamily="serif"
+                tools:text="AWAY" />
+
+            <TextView
+                android:id='@+id/team_b_score'
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/textview_bg"
+                android:gravity="center_horizontal"
+                android:text="@string/score_b"
+                android:textColor='#768fff'
+                android:textSize='34sp'
+                app:fontFamily="monospace"
+                tools:text="0" />
+
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="32dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_bg"
+                android:onClick="addTouchDownForTeamB"
+                android:padding="4dp"
+                android:text="@string/touchdown"
+                android:textColor='#ff0000'
+                android:textSize='16sp'
+                tools:text="TOUCHDOWN" />
+
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="32dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_bg"
+                android:onClick="addFieldGoalForTeamB"
+                android:padding="4dp"
+                android:text="@string/fieldgoal"
+                android:textColor='#ff0000'
+                android:textSize='16sp'
+                tools:text="FIELDGOAL" />
+
+            <Button
+                android:layout_width="170dp"
+                android:layout_height="32dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_bg"
+                android:onClick="addSafetyForTeamB"
+                android:padding="4dp"
+                android:text="@string/safety"
+                android:textColor='#ff0000'
+                android:textSize='16sp'
+                tools:text="SAFETY" />
+
+            <Button
+                android:id='@+id/resetScoreTeamB'
+                android:layout_width="170dp"
+                android:layout_height="46dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_bg"
+                android:onClick="resetScoreB"
+                android:padding="4dp"
+                android:text="@string/reset_score_b"
+                android:textColor='#768fff'
+                android:textSize='30sp'
+                app:fontFamily="serif"
+                tools:text="RESET" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id='@+id/penaltyTracker'
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scoreTracker"
+        android:orientation='horizontal'
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreTracker">
+
+        <LinearLayout
+            android:id="@+id/team_penalty_a"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/team_penalty_b"
+            android:orientation='vertical'>
+
+        <!--<View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />-->
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="32dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/button_bg"
+            android:onClick="addOneForTeamA"
+            android:padding="4dp"
+            android:text="@string/pass_x_a"
+            android:textColor='#ad0000'
+            android:textSize='16sp'
+            tools:text="PASS INT" />
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="32dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/button_bg"
+            android:onClick="addOneForTeamA"
+            android:padding="4dp"
+            android:text="@string/fumble_a"
+            android:textColor='#ad0000'
+            android:textSize='16sp'
+            tools:text="FUMBLE" />
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="32dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/button_bg"
+            android:onClick="addOneForTeamA"
+            android:padding="4dp"
+            android:text="@string/qb_sacks_a"
+            android:textColor='#ad0000'
+            android:textSize='16sp'
+            tools:text="QB SACKS" />
+
+        <TextView
+            android:id='@+id/team_a_penalty'
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/textview_bg"
+            app:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="@string/penalty"
+            android:textColor='#768fff'
+            android:textSize='34sp'
+            tools:text="0" />
+
+        <Button
+            android:id='@+id/resetPenaltyTeamA'
+            android:layout_width="170dp"
+            android:layout_height="46dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/button_bg"
+            android:onClick="resetPenaltyA"
+            android:padding="4dp"
+            android:text="@string/reset_penalty_a"
+            android:textColor='#768fff'
+            android:textSize='30sp'
+            app:fontFamily="serif"
+            tools:text="RESET" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/team_penalty_b"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="@id/team_penalty_a"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation='vertical'>
+
+            <!--<View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />-->
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="32dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/button_bg"
+            android:onClick="addOneForTeamB"
+            android:padding="4dp"
+            android:text="@string/pass_x_b"
+            android:textColor='#ad0000'
+            android:textSize='16sp'
+            tools:text="PASS INT" />
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="32dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/button_bg"
+            android:onClick="addOneForTeamB"
+            android:padding="4dp"
+            android:text="@string/fumble_b"
+            android:textColor='#ad0000'
+            android:textSize='16sp'
+            tools:text="FUMBLE" />
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="32dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/button_bg"
+            android:onClick="addOneForTeamB"
+            android:padding="4dp"
+            android:text="@string/qb_sacks_b"
+            android:textColor='#ad0000'
+            android:textSize='16sp'
+            tools:text="QB SACKS" />
+
+        <TextView
+            android:id='@+id/team_b_penalty'
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/textview_bg"
+            app:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="@string/penalty"
+            android:textColor='#768fff'
+            android:textSize='34sp'
+            tools:text="0" />
+
+        <Button
+            android:id='@+id/reset'
+            android:layout_width="170dp"
+            android:layout_height="46dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/button_bg"
+            android:onClick="resetPenaltyB"
+            android:padding="4dp"
+            android:text="@string/reset_penalty_b"
+            android:textColor='#768fff'
+            android:textSize='30sp'
+            app:fontFamily="serif"
+            tools:text="RESET" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
