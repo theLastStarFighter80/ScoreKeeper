@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">ScoreKeeper</string>
+    <string name="app_name">Udacity: ScoreKeeper</string>
+    <string name="p1">field</string>
+    <string name="team_a">HOME</string>
+    <string name="team_a_score">0</string>
+    <string name="touchdown">TOUCHDOWN</string>
+    <string name="fieldgoal">FIELDGOAL</string>
+    <string name="safety">SAFETY</string>
+    <string name="reset_score_a">RESET</string>
+    <string name="banner">footballs</string>
+    <string name="team_b">AWAY</string>
+    <string name="score_b">0</string>
+    <string name="pass_x_a">PASS INT</string>
+    <string name="fumble_a">FUMBLE</string>
+    <string name="qb_sacks_a">QB SACKS</string>
+    <string name="penalty">0</string>
+    <string name="reset_penalty_a">RESET</string>
+    <string name="reset_score_b">RESET</string>
+    <string name="pass_x_b">PASS INT</string>
+    <string name="fumble_b">FUMBLE</string>
+    <string name="qb_sacks_b">QB SACKS</string>
+    <string name="reset_penalty_b">RESET</string>
 </resources>
